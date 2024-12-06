@@ -1,24 +1,24 @@
 <?php
 
-function apply($a, $b, $rules) : int {
-    return in_array([$a, $b], $rules) ? -1 : (in_array([$b, $a], $rules) ? 1 : 0);
+function grid(string $input, string $separator) : array {
+    return array_map(fn ($rule) => explode($separator, $rule), explode(PHP_EOL, $input));
 }
 
-function order($update, $rules) {
-    usort($update, fn ($a, $b) => apply($a, $b, $rules));
+function order(array $update, array $rules) : array {
+    usort($update, fn ($a, $b) => in_array([$a, $b], $rules, true) ? -1 : 1);
     return $update;
 }
 
-list($rules, $updates) = explode(PHP_EOL.PHP_EOL, file_get_contents('input'));
-$rules = array_map(fn ($rule) => explode("|", $rule), explode(PHP_EOL, $rules));
-$updates = array_map(fn ($update) => explode(",", $update), explode(PHP_EOL, $updates));
+function sums(array $sums, array $update, array $rules) : array {
+    $ordered = order($update, $rules);
+    $sums[$update === $ordered] += $ordered[intdiv(count($ordered), 2)];
+    return $sums;
+}
 
-$valid = array_filter($updates, fn ($update) => $update === order($update, $rules));
-$valid_middles = array_map(fn ($update) => $update[intdiv(count($update), 2)], $valid);
+$input = explode(PHP_EOL.PHP_EOL, file_get_contents('input'));
+list($rules, $updates) = array_map(grid(...), $input, ["|", ","]);
 
-$invalid = array_filter($updates, fn ($update) => $update !== order($update, $rules));
-$invalid_ordered = array_map(fn ($update) => order($update, $rules), $invalid);
-$invalid_ordered_middles = array_map(fn ($update) => $update[intdiv(count($update), 2)], $invalid_ordered);
+list($invalid, $valid) = array_reduce($updates, fn ($sums, $update) => sums($sums, $update, $rules), [0, 0]);
 
-echo array_sum($valid_middles).PHP_EOL;
-echo array_sum($invalid_ordered_middles).PHP_EOL;
+echo $valid.PHP_EOL;
+echo $invalid.PHP_EOL;
