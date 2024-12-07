@@ -1,24 +1,21 @@
 <?php
 
-function test($test, $operators) {
-    if (count($test) == 2) {
-        return count(array_unique($test)) === 1;
+function test($equation, $operators) : bool {
+    if (count($equation) == 2) {
+        return count(array_unique($equation)) === 1;
     }
 
-    return array_reduce($operators, validator($test, $operators), false);
+    $target = array_shift($equation);
+    $left = array_shift($equation);
+    $right = array_shift($equation);
+
+    $validator = fn($operator) => test([$target, $operator($left, $right), ...$equation], $operators);
+
+    return array_any($operators, $validator);
 }
 
-function validator($test, $operators) {
-
-    $result = array_shift($test);
-    $left = array_shift($test);
-    $right = array_shift($test);
-
-    return fn($valid, $operator) => $valid || test([$result, $operator($left, $right), ...$test], $operators);
-}
-
-function solve ($tests, $operators) {
-    return array_sum(array_column(array_filter($tests, fn ($test) => test($test, $operators)), 0));
+function solve ($equations, $operators) : int {
+    return array_sum(array_column(array_filter($equations, fn ($equation) => test($equation, $operators)), 0));
 }
 
 $input = file_get_contents('input');
