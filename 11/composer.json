@@ -1,0 +1,12 @@
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:lrhoek/pf.git"
+        }
+    ]
+    ,"require": {
+        "crell/fp": "^1.0",
+        "lrhoek/pf": "dev-main"
+    }
+}

@@ -1,0 +1,125 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "ba30294a1ab763d272975702ce724de6",
+    "packages": [
+        {
+            "name": "crell/fp",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Crell/fp.git",
+                "reference": "796a1eaa3e2d841f93359f9ef64e45326b68af87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Crell/fp/zipball/796a1eaa3e2d841f93359f9ef64e45326b68af87",
+                "reference": "796a1eaa3e2d841f93359f9ef64e45326b68af87",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~8.1"
+            },
+            "require-dev": {
+                "phpbench/phpbench": "^1.2",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "~10.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/array.php",
+                    "src/composition.php",
+                    "src/object.php",
+                    "src/string.php"
+                ],
+                "psr-4": {
+                    "Crell\\fp\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Larry Garfield",
+                    "email": "larry@garfieldtech.com",
+                    "homepage": "http://www.garfieldtech.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Functional utilities for PHP 8 and later",
+            "homepage": "https://github.com/Crell/fp",
+            "keywords": [
+                "array",
+                "fp",
+                "functional"
+            ],
+            "support": {
+                "issues": "https://github.com/Crell/fp/issues",
+                "source": "https://github.com/Crell/fp/tree/1.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Crell",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-10-28T20:06:08+00:00"
+        },
+        {
+            "name": "lrhoek/pf",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lrhoek/pf.git",
+                "reference": "e190c727e86e9eab802858aa7d4df48bc09c0178"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lrhoek/pf/zipball/e190c727e86e9eab802858aa7d4df48bc09c0178",
+                "reference": "e190c727e86e9eab802858aa7d4df48bc09c0178",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Lrhoek\\pf\\": "src"
+                },
+                "files": [
+                    "src/pf.php"
+                ]
+            },
+            "description": "PHP Functions",
+            "support": {
+                "source": "https://github.com/lrhoek/pf/tree/main",
+                "issues": "https://github.com/lrhoek/pf/issues"
+            },
+            "time": "2024-12-11T22:16:23+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "lrhoek/pf": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
+}
