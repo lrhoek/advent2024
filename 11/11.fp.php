@@ -12,15 +12,22 @@ function solve(string $input, int $blinks) : int {
         $input,
         fp\explode(" "),
         array_count_values(...),
-        pf\iterate($blinks, fp\reduceWithKeys([], map(...))),
+        pf\iterate(blink(...)),
+        pf\ittake($blinks),
+        fp\collect(...),
+        fp\flatten(...),
         array_sum(...)
     );
 }
 
+function blink(array $pebbles) : array {
+    return fp\reduceWithKeys([], map(...))($pebbles);
+}
+
 function map(array $pebbles, int $amount, int $number) : array {
-    return match (true) {
-        $number === 0 => pf\addset($pebbles, 1, $amount),
-        strlen((string) $number) % 2 === 0 => split($pebbles, (string) $number, $amount),
+    return match (0) {
+        $number => pf\addset($pebbles, 1, $amount),
+        strlen((string) $number) % 2 => split($pebbles, (string) $number, $amount),
         default => pf\addset($pebbles, $number * 2024, $amount)
     };
 }
