@@ -12,7 +12,7 @@ function solve(string $input, int $blinks) : int {
         $input,
         fp\explode(" "),
         array_count_values(...),
-        pf\iterate(blink(...)),
+        pf\iterate(fp\reduceWithKeys([], blink(...))),
         pf\ittake($blinks),
         fp\collect(...),
         fp\flatten(...),
@@ -20,32 +20,26 @@ function solve(string $input, int $blinks) : int {
     );
 }
 
-function blink(array $pebbles) : array {
-     return fp\reduceWithKeys([], map(...))($pebbles);
-}
+function blink(array $pebbles, int $amount, int $number) : array {
 
-function map(array $pebbles, int $amount, int $number) : array {
-    switch (0) {
+    if ($number === 0) {
+        $pebbles = pf\add($pebbles, 1, $amount);
+    }
 
-        case $number:
-            $pebbles = pf\add($pebbles, 1, $amount);
-            break;
+    elseif (strlen((string) $number) % 2 === 0) {
+        [$left, $right] = str_split((string) $number, strlen((string) $number) / 2);
+        $pebbles = pf\add($pebbles, (int) $left, $amount);
+        $pebbles = pf\add($pebbles, (int) $right, $amount);
+    }
 
-        case strlen((string) $number) % 2:
-            $number = (string) $number;
-            [$left, $right] = str_split($number, strlen($number) / 2);
-            $pebbles = pf\add($pebbles, (int) $left, $amount);
-            $pebbles = pf\add($pebbles, (int) $right, $amount);
-            break;
-
-        default:
-            $pebbles = pf\add($pebbles, $number * 2024, $amount);
-            break;
+    else {
+        $pebbles = pf\add($pebbles, $number * 2024, $amount);
     }
 
     return $pebbles;
 }
 
 $input = file_get_contents('input');
+
 echo solve($input, 25).PHP_EOL;
 echo solve($input, 75).PHP_EOL;
