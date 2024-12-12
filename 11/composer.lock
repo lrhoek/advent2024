@@ -82,15 +82,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lrhoek/pf.git",
-                "reference": "e190c727e86e9eab802858aa7d4df48bc09c0178"
+                "reference": "56f21aaeffc9b2f492ab92d08d334eec6c435c22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lrhoek/pf/zipball/e190c727e86e9eab802858aa7d4df48bc09c0178",
-                "reference": "e190c727e86e9eab802858aa7d4df48bc09c0178",
+                "url": "https://api.github.com/repos/lrhoek/pf/zipball/56f21aaeffc9b2f492ab92d08d334eec6c435c22",
+                "reference": "56f21aaeffc9b2f492ab92d08d334eec6c435c22",
                 "shasum": ""
             },
             "require": {
+                "crell/fp": "^1.0",
                 "php": ">8.0"
             },
             "default-branch": true,
@@ -108,7 +109,7 @@
                 "source": "https://github.com/lrhoek/pf/tree/main",
                 "issues": "https://github.com/lrhoek/pf/issues"
             },
-            "time": "2024-12-11T22:16:23+00:00"
+            "time": "2024-12-12T08:43:19+00:00"
         }
     ],
     "packages-dev": [],
