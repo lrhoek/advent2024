@@ -21,23 +21,29 @@ function solve(string $input, int $blinks) : int {
 }
 
 function blink(array $pebbles) : array {
-    return fp\reduceWithKeys([], map(...))($pebbles);
+     return fp\reduceWithKeys([], map(...))($pebbles);
 }
 
 function map(array $pebbles, int $amount, int $number) : array {
-    return match (0) {
-        $number => pf\addset($pebbles, 1, $amount),
-        strlen((string) $number) % 2 => split($pebbles, (string) $number, $amount),
-        default => pf\addset($pebbles, $number * 2024, $amount)
-    };
-}
+    switch (0) {
 
-function split(array $pebbles, string $number, int $amount) : array {
-    return array_reduce(
-        str_split($number, strlen($number) / 2),
-        fn($new, $part) => pf\addset($new, (int) $part, $amount),
-        $pebbles
-    );
+        case $number:
+            $pebbles = pf\add($pebbles, 1, $amount);
+            break;
+
+        case strlen((string) $number) % 2:
+            $number = (string) $number;
+            [$left, $right] = str_split($number, strlen($number) / 2);
+            $pebbles = pf\add($pebbles, (int) $left, $amount);
+            $pebbles = pf\add($pebbles, (int) $right, $amount);
+            break;
+
+        default:
+            $pebbles = pf\add($pebbles, $number * 2024, $amount);
+            break;
+    }
+
+    return $pebbles;
 }
 
 $input = file_get_contents('input');
